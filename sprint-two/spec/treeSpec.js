@@ -40,5 +40,18 @@ describe('tree', function() {
     expect(tree.contains(7)).to.equal(true);
     expect(tree.contains(8)).to.equal(true);
   });
+  
+  it('should detect root parent', function() { 
+    tree.addChild(5);
+    tree.addChild(6);
+    expect(tree.children[0].parent).to.equal(tree);
+  });
+
+  it('should detect parent in children', function() { 
+    tree.addChild(5);
+    tree.addChild(6);
+    tree.children[0].addChild(7);
+    expect(tree.children[0].children[0].parent).to.equal(tree.children[0]);
+  });
 
 });
