@@ -50,6 +50,23 @@ describe('linkedList', function() {
     linkedList.removeHead();
     expect(linkedList.contains(4)).to.equal(false);
   });
+  
+  it('should reference the same node when checking head and tail', function() {
+    linkedList.addToTail(5);
+    expect(linkedList.tail.value).to.equal(5);
+    expect(linkedList.head.value).to.equal(5);
+  });
+  
+  // add more tests here to test the functionality of linkedList
+});
+
+
+describe('doubly-linkedList', function() {
+  var linkedList;
+
+  beforeEach(function() {
+    linkedList = LinkedList();
+  });
 
   it('should add a previous property to the tail', function () {
     linkedList.addToTail(4);
@@ -82,5 +99,4 @@ describe('linkedList', function() {
     linkedList.removeTail();
     expect(linkedList.tail.value).to.equal(4);
   });
-  // add more tests here to test the functionality of linkedList
 });
