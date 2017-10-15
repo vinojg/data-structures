@@ -1,9 +1,10 @@
 var Tree = function(value) {
   var newTree = {};
-  newTree.value = value;
+  newTree.value = value || 'root';
   
   // your code here
   newTree.children = []; 
+  newTree.parent = null;
   extend(newTree, treeMethods);
   return newTree;
 };
@@ -18,6 +19,16 @@ var treeMethods = {};
 
 treeMethods.addChild = function(value) {
   this.children.push(new Tree(value));
+  // this.children.forEach(function(each) {
+  //   each.parent = this;
+  //   //console.log(JSON.stringify(each.parent));
+  // });
+  if (this.children.length > 0) {
+    for (var i = 0; i < this.children.length; i++) {
+      this.children[i].parent = this;
+      //console.log(JSON.stringify(this.children));
+    }
+  }
 };
 
 treeMethods.contains = function(target) {
